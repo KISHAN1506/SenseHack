@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
     }, []);
 
     const login = async (email, password) => {
-        const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+        const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/login`, { email, password });
         localStorage.setItem('token', res.data.token);
         // We need to decode token or fetch user. For now, let's assume backend returns user or we fetch it.
         // The backend currently only returns token.
@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
         const payload = JSON.parse(atob(token.split('.')[1]));
         const userId = payload.user.id;
 
-        const userRes = await axios.get(`http://localhost:5000/api/users/${userId}/dashboard`, {
+        const userRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/${userId}/dashboard`, {
             headers: { 'x-auth-token': token }
         });
 
@@ -59,14 +59,14 @@ export const AuthProvider = ({ children }) => {
     };
 
     const register = async (name, email, password, role) => {
-        const res = await axios.post('http://localhost:5000/api/auth/register', { name, email, password, role });
+        const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`, { name, email, password, role });
         localStorage.setItem('token', res.data.token);
 
         const token = res.data.token;
         const payload = JSON.parse(atob(token.split('.')[1]));
         const userId = payload.user.id;
 
-        const userRes = await axios.get(`http://localhost:5000/api/users/${userId}/dashboard`, {
+        const userRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/${userId}/dashboard`, {
             headers: { 'x-auth-token': token }
         });
 
