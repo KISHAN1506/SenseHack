@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import HackathonDetails from './pages/HackathonDetails';
+import Hackathons from './pages/Hackathons';
 
 import CreateHackathon from './pages/CreateHackathon';
 
@@ -23,6 +24,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/create-hackathon" element={<CreateHackathon />} />
+              <Route path="/hackathons" element={<Hackathons />} />
               <Route path="/hackathons/:id" element={<HackathonDetails />} />
             </Routes>
           </main>

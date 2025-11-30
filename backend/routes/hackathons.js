@@ -19,7 +19,18 @@ router.post('/', auth, async (req, res) => {
         res.json(hackathon);
     } catch (err) {
         console.error(err.message);
-        res.status(500).send('Server Error');
+        res.status(500).json({ msg: 'Server Error' });
+    }
+});
+
+// Get All Hackathons
+router.get('/', async (req, res) => {
+    try {
+        const hackathons = await Hackathon.find().populate('organizer', 'name');
+        res.json(hackathons);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ msg: 'Server Error' });
     }
 });
 
