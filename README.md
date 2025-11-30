@@ -1,1 +1,63 @@
 # SenseHack
+
+## Overview
+Sense Hack is a MERN stack hackathon management platform. It allows organizers to create hackathons, participants to form teams, and judges to score submissions.
+
+## Features Implemented
+- **Authentication**: User registration and login (JWT based).
+- **Hackathon Management**: Create hackathons, manage phases (Org only).
+- **Team Management**: Create teams, join requests, open teams list.
+- **Submissions**: Submit repo/slides, scoring by judges.
+- **Dashboard**: User dashboard showing participating and organized hackathons.
+- **Design System**: Custom dark mode design with orange accents.
+
+## How to Run
+
+1. **Install Dependencies**
+   ```bash
+   npm run install-all
+   ```
+
+2. **Start Application**
+   ```bash
+   npm start
+   ```
+   This will run both the backend (port 5000) and frontend (port 5173) concurrently.
+
+## Verification Steps
+
+### 1. Registration
+- Go to `/register`.
+- Create a user (Participant/Organizer).
+
+### 2. Create Hackathon (Organizer)
+- Login as Organizer.
+- Go to `/create-hackathon`.
+- Fill in details and create.
+
+### 3. Join Hackathon (Participant)
+- Login as Participant.
+- Go to `/hackathons`.
+- View details and create a team or join an open team.
+
+### 4. Submissions
+- As a team leader, submit project links on the Hackathon Details page (UI for submission is in the code but might need a refresh to appear based on state).
+
+## API Endpoints
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `GET /api/hackathons`
+- `POST /api/hackathons`
+- `GET /api/users/:id/dashboard`
+
+## Troubleshooting
+### Common Issues
+- **Frontend Error (500 Internal Server Error)**: If you see a "Failed to resolve import" error, it means dependencies are missing. Run `cd frontend && npm install` to fix it.
+- **Port In Use**: If port 5173 is in use, Vite will automatically switch to the next available port (e.g., 5174). Check the terminal output for the correct URL.
+
+## UI Enhancements
+The application now features a premium dark mode design with:
+- **Dynamic Gradients**: Subtle background animations.
+- **Interactive Buttons**: Hover effects with glow and lift animations.
+- **Glassmorphism**: Cards have a blurred background effect.
+- **Micro-animations**: Elements fade and slide in on load.
