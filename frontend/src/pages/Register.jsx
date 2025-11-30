@@ -14,7 +14,15 @@ const Register = () => {
             await register(formData.name, formData.email, formData.password, formData.role);
             navigate('/dashboard');
         } catch (err) {
-            setError(err.response?.data?.msg || 'Registration failed');
+            let msg = 'Registration failed';
+            if (err.response?.data?.msg) {
+                msg = err.response.data.msg;
+            } else if (typeof err.response?.data === 'string') {
+                msg = err.response.data;
+            } else if (err.message) {
+                msg = err.message;
+            }
+            setError(msg);
         }
     };
 
