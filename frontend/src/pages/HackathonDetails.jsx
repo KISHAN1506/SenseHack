@@ -13,10 +13,10 @@ const HackathonDetails = () => {
     useEffect(() => {
         const fetchHackathon = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/hackathons/${id}`);
+                const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/hackathons/${id}`);
                 setHackathon(res.data);
 
-                const teamsRes = await axios.get(`http://localhost:5000/api/hackathons/${id}/teams/open`);
+                const teamsRes = await axios.get(`${import.meta.env.VITE_API_URL}/api/hackathons/${id}/teams/open`);
                 setTeams(teamsRes.data);
 
                 setLoading(false);
